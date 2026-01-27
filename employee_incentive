@@ -1,0 +1,65 @@
+---------EMPLOYEE & INCENTIOVES------
+
+---1. Write create table syntax for employee table and Incentive table
+CREATE TABLE employee(
+       emp_id NUMBER PRIMARY KEY,
+       first_name VARCHAR2(40),
+       last_name VARCHAR2(40),
+       salary NUMBER,
+       joining_date DATE,
+       department VARCHAR2(40)
+);
+
+SELECT*FROM employee;
+
+CREATE TABLE incentives(
+       employee_ref_id NUMBER,
+       incentive_date DATE,
+       incentive_amount NUMBER
+);
+
+SELECT*FROM incentives;
+
+-- 2. Write syntax for insert data into table of employee table and Incentive table
+
+INSERT INTO employee VALUES (1,'John', 'Abraham', 1000000, TO_DATE('01-JAN-2013','DD-MON-YYYY'), 'Banking');
+INSERT INTO employee VALUES (2, 'Michael', 'Clarke', 800000, TO_DATE('01-JAN-2013', 'DD-MON-YYYY'), 'Insurance');
+INSERT INTO employee VALUES (3, 'Roy', 'Thomas', 700000, TO_DATE('01-FEB-2013', 'DD-MON-YYYY'), 'Banking');
+INSERT INTO employee VALUES (4, 'Tom', 'Jose', 600000, TO_DATE('01-FEB-2013', 'DD-MON-YYYY'), 'Insurance');
+INSERT INTO employee VALUES (5, 'Jerry', 'Pinto', 650000, TO_DATE('01-FEB-2013', 'DD-MON-YYYY'), 'Insurance');
+INSERT INTO employee VALUES (6, 'Philip', 'Mathew', 750000, TO_DATE('01-JAN-2013', 'DD-MON-YYYY'), 'Services');
+
+INSERT INTO incentives VALUES (1, TO_DATE('01-FEB-2013', 'DD-MON-YYYY'), 5000);
+INSERT INTO incentives VALUES (2, TO_DATE('01-Feb-2013', 'DD-MON-YYYY'), 3000);
+INSERT INTO incentives VALUES (3, TO_DATE('01-Feb-2013', 'DD-MON-YYYY'), 4000);
+INSERT INTO incentives VALUES (1, TO_DATE('01-Jan-2013', 'DD-MON-YYYY'), 4500);
+INSERT INTO incentives VALUES (2, TO_DATE('01-Jan-2013', 'DD-MON-YYYY'), 3500);
+
+Delete from incentives;
+TRUNCATE TABLE incentives;
+DROP TABLE incentives;
+
+--- 3.Get all employee details from the employee table
+SELECT * FROM employee;
+
+--- 4. Get First_Name,Last_Name from employee table
+SELECT First_Name,Last_Name from employee;
+
+---5. Get First_Name from employee table using alias name “Employee Name”
+SELECT First_Name AS "Employee Name" from employee;
+
+---6. Get First_Name from employee table in upper case
+SELECT upper(first_name) from employee;
+
+---7. Select first 3 characters of FIRST_NAME from EMPLOYEE
+SELECT substr(first_name,1,3)from employee;
+
+---8. Get position of 'o' in name 'John' from employee table
+SELECT INSTR('John','o') from employee
+WHERE first_name = 'John';
+
+---9. Get FIRST_NAME from employee table after removing white spaces from right side.
+SELECT RTRIM(first_name) FROM employee;
+
+---10. Get First_Name from employee table after replacing 'o' with '$'
+SELECT REPLACE(first_name,'o','$') FROM employee;
